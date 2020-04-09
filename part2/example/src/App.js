@@ -25,7 +25,7 @@ const App = () => {
         noteService
             .getAll()
             .then(returnedData => {
-                console.log('promise fulfilled')
+                console.log('promise fulfilled', returnedData)
                 setNotes(returnedData)
             })
     }, [])
@@ -69,7 +69,7 @@ const App = () => {
     }
 
     let notesToShow = showAll ? notes : notes.filter(note => note.important)
-
+    console.log(notesToShow)
     return (
         <div>
             <h1>Notes</h1>

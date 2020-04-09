@@ -56,8 +56,6 @@ const App = () => {
           const newMsg = { type: "error", message: notification }
           setMsg(newMsg)
         })
-
-
     }
   }
 
@@ -80,12 +78,18 @@ const App = () => {
         setPersons(persons.concat(returnData))
         setNewName('')
         setNewNumber('')
+
+        const notification = "Added " + newPerson.name
+        const newMsg = { type: "success", message: notification }
+        setMsg(newMsg)
+      })
+      .catch(error => {
+        console.log(error.response.data)
+        const newMsg = { type: "error", message: error.response.data.error }
+        setMsg(newMsg)
       })
 
 
-    const notification = "Added " + newPerson.name
-    const newMsg = { type: "success", message: notification }
-    setMsg(newMsg)
   }
 
   const handleDelete = id => {
@@ -98,8 +102,6 @@ const App = () => {
         .then(response => {
           setPersons(persons.filter(person => person.id !== id))
         })
-
-
     }
   }
 
